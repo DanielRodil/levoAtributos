@@ -8,7 +8,7 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		LocalDate fechaAccesoApp = LocalDate.of(2022, 9, 19);
+		LocalDate fechaAccesoApp = LocalDate.of(2024, 11, 19);
 
 		//alta vehiculo (formulario)
 		Vehiculo pgc1111a = new Vehiculo(LocalDate.of(2020, 9, 19), 0);
@@ -79,6 +79,58 @@ public class App {
 		System.out.println("\nPGC1111A despues de PRIMER MANTENIMIENTO:");
 		System.out.println(pgc1111a.toString());		
 		System.out.println("\nAVISOS PGC1111A despues de PRIMER MANTENIMIENTO:");
+		Utils.avisoMeses(pgc1111a);
+		Utils.avisoKilometros(pgc1111a);
+		
+		//avisos si entro el 19/01/23 (28 meses despues del alta y 4 despues del primer mantenimiento)
+		pgc1111a.setKilometrosActuales(45000);
+		pgc1111a.setMesesActuales(Utils.getMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
+		System.out.println("---------------------------------------------------------------------------------------");
+		System.out.println("\nPGC1111A (28 meses despues del alta):");
+		System.out.println(pgc1111a.toString());	
+		System.out.println("\nAVISOS PGC1111A (28 meses despues del alta):");
+		Utils.avisoMeses(pgc1111a);
+		Utils.avisoKilometros(pgc1111a);
+		
+		//se crea el segundo mantenimiento
+		MantenimientoRealizado mantenimiento2pgc1111a = new MantenimientoRealizado();
+		mantenimientosPGC1111a.add(mantenimiento2pgc1111a);
+		mantenimiento2pgc1111a.setFechaMantenimiento(LocalDate.of(2023, 3, 19));
+		mantenimiento2pgc1111a.setKilometrosMantenimiento(50000);
+		mantenimiento2pgc1111a.setFiltroCombustible(true);
+
+		//avisos despues del segundo mantenimiento (19/03/2023)
+	    Utils.actualizaPeriodosRevisiones(pgc1111a, mantenimiento2pgc1111a);		
+		System.out.println("---------------------------------------------------------------------------------------");
+	    System.out.println("\nPGC1111A despues de SEGUNDO MANTENIMIENTO:");
+		System.out.println(pgc1111a.toString());		
+		System.out.println("\nAVISOS PGC1111A despues de SEGUNDO MANTENIMIENTO:");
+		Utils.avisoMeses(pgc1111a);
+		Utils.avisoKilometros(pgc1111a);
+		
+		//se crea el tercer mantenimiento
+		MantenimientoRealizado mantenimiento3pgc1111a = new MantenimientoRealizado();
+		mantenimientosPGC1111a.add(mantenimiento3pgc1111a);
+		mantenimiento3pgc1111a.setFechaMantenimiento(LocalDate.of(2023, 9, 19));
+		mantenimiento3pgc1111a.setKilometrosMantenimiento(70000);	
+		mantenimiento3pgc1111a.setLiquidoFrenos(true);
+		
+		//avisos despues del tercer mantenimiento (19/09/2023)
+		Utils.actualizaPeriodosRevisiones(pgc1111a, mantenimiento3pgc1111a);
+		System.out.println("---------------------------------------------------------------------------------------");
+		System.out.println("\nPGC1111A despues de TERCER MANTENIMIENTO:");
+		System.out.println(pgc1111a.toString());		
+		System.out.println("\nAVISOS PGC1111A despues de TERCER MANTENIMIENTO:");
+		Utils.avisoMeses(pgc1111a);
+		Utils.avisoKilometros(pgc1111a);
+		
+		//avisos si entro el 19/11/24 (50 meses despues del alta y 14 despues del tercer mantenimiento)
+		pgc1111a.setKilometrosActuales(120000);
+		pgc1111a.setMesesActuales(Utils.getMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
+		System.out.println("---------------------------------------------------------------------------------------");
+		System.out.println("\nPGC1111A (50 meses despues del alta):");
+		System.out.println(pgc1111a.toString());	
+		System.out.println("\nAVISOS PGC1111A (50 meses despues del alta):");
 		Utils.avisoMeses(pgc1111a);
 		Utils.avisoKilometros(pgc1111a);
 		

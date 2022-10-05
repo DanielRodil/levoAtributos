@@ -12,6 +12,7 @@ public class Utils {
 		return (int) localDate.until(localdate2).toTotalMonths();
 	}
 	
+	
 	public static void actualizaPeriodosRevisiones(Vehiculo vehiculo, MantenimientoRealizado mantenimientoRealizado) {
 		
 		Period periodo = vehiculo.getFechaAlta().until(mantenimientoRealizado.getFechaMantenimiento());
@@ -100,11 +101,9 @@ public class Utils {
 			vehiculo.getTemporalPMP().setBujiasEncendidoKm(vehiculo.getTemporalPMP().getBujiasEncendidoKm() + vehiculo.getKilometrosActuales());
 			vehiculo.getTemporalPMP().setBujiasEncendidoMes(vehiculo.getTemporalPMP().getBujiasEncendidoMes() + mesesDesdeAltaHastaMantenimiento);
 		}	
-		
-		
+			
 	}
 
-	
 	
 	public static void avisoKilometros(Vehiculo vehiculo) {
 		
@@ -211,24 +210,5 @@ public class Utils {
 		if (vehiculo.getTemporalPMP().getBujiasEncendidoMes() == menorMes) {System.out.println("BUJIAS ENCENDIDO");}
 	
 	}
-	
-	
-	
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getLiquidoFrenosMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getOperacionesSistematicasMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getFiltroAireMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getFiltroAireHabitaculoMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getFiltroCombustibleMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getFiltroAntipolenMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getCorreaDistribucionMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getKitDistribucionMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getReglajeProyectoresMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getpHLiquidoRefrigeracionMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getLiquidoRefrigeracionMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getCorreaArrastreAccesoriosMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getKitCorreaArrastreAccesoriosMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getAnticongelanteMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getAceiteTransimisionMes());
-//	piezasMespgc1111a.add(temporalPMPpgc1111a.getBujiasEncendidoMes());
 
 }
