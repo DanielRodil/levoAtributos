@@ -106,8 +106,8 @@ public class Vehiculo {
 	public String toString() {
 		return "Vehiculo [fechaAlta=" + fechaAlta + ", kilometrosActuales=" + kilometrosActuales + ", mesesActuales="
 				+ mesesActuales + ", datosIdentificativos=" + datosIdentificativos + ", datosTecnicosInteres="
-				+ datosTecnicosInteres + ", planMantenimientoPreventivo=" + planMantenimientoPreventivo
-				+ ", temporalPMP=" + temporalPMP + ", mantenimientosRealizados=" + mantenimientosRealizados + "]";
+				+ datosTecnicosInteres + ", \n\nplanMantenimientoPreventivo=" + planMantenimientoPreventivo
+				+ ", \n\ntemporalPMP=" + temporalPMP + ", \n\nmantenimientosRealizados=" + mantenimientosRealizados + "]";
 	}
 	
 	

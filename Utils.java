@@ -12,60 +12,99 @@ public class Utils {
 		return (int) localDate.until(localdate2).toTotalMonths();
 	}
 	
-//	public static void actualizaPeriodosRevisiones(Vehiculo vehiculo, MantenimientoRealizado mantenimientoRealizado) {
-//		vehiculo.setKilometrosActuales(mantenimientoRealizado.getKilometrosMantenimiento());
-//		
-//		Period periodo = vehiculo.getFechaAlta().until(mantenimientoRealizado.getFechaMantenimiento());
-//		int mesesDesdeAltaHastaMantenimiento = (int) periodo.toTotalMonths();
-//		mantenimientoRealizado.setMesesMantenimiento(mesesDesdeAltaHastaMantenimiento);
-//		
-//		vehiculo.setMesesActuales(mantenimientoRealizado.getMesesMantenimiento());
-//		
-//		for (Pieza pieza : vehiculo.getTemporalPMP().getPiezas()) {
-//			for (Pieza pieza2 : mantenimientoRealizado.getPiezas()) {
-//				if (pieza.equals(pieza2)) {
-//					pieza.setKilometros(pieza.getKilometros() + vehiculo.getKilometrosActuales());
-//					pieza.setMeses(pieza.getMeses() + mesesDesdeAltaHastaMantenimiento);
-//				}
-//			}
-//		}
-//	}
+	public static void actualizaPeriodosRevisiones(Vehiculo vehiculo, MantenimientoRealizado mantenimientoRealizado) {
+		
+		Period periodo = vehiculo.getFechaAlta().until(mantenimientoRealizado.getFechaMantenimiento());
+		int mesesDesdeAltaHastaMantenimiento = (int) periodo.toTotalMonths();
+		mantenimientoRealizado.setMesesMantenimiento(mesesDesdeAltaHastaMantenimiento);
+		
+		vehiculo.setKilometrosActuales(mantenimientoRealizado.getKilometrosMantenimiento());
+		vehiculo.setMesesActuales(mantenimientoRealizado.getMesesMantenimiento());
+		
+		if (mantenimientoRealizado.isLiquidoFrenos() == true) {
+			vehiculo.getTemporalPMP().setLiquidoFrenosKm(vehiculo.getTemporalPMP().getLiquidoFrenosKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setLiquidoFrenosMes(vehiculo.getTemporalPMP().getLiquidoFrenosMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isOperacionesSistematicas() == true) {
+			vehiculo.getTemporalPMP().setOperacionesSistematicasKm(vehiculo.getTemporalPMP().getOperacionesSistematicasKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setOperacionesSistematicasMes(vehiculo.getTemporalPMP().getOperacionesSistematicasMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isFiltroAire() == true) {
+			vehiculo.getTemporalPMP().setFiltroAireKm(vehiculo.getTemporalPMP().getFiltroAireKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setFiltroAireMes(vehiculo.getTemporalPMP().getFiltroAireMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isFiltroAireHabitaculo() == true) {
+			vehiculo.getTemporalPMP().setFiltroAireHabitaculoKm(vehiculo.getTemporalPMP().getFiltroAireHabitaculoKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setFiltroAireHabitaculoMes(vehiculo.getTemporalPMP().getFiltroAireHabitaculoMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isFiltroCombustible() == true) {
+			vehiculo.getTemporalPMP().setFiltroCombustibleKm(vehiculo.getTemporalPMP().getFiltroCombustibleKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setFiltroCombustibleMes(vehiculo.getTemporalPMP().getFiltroCombustibleMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isFiltroAntipolen() == true) {
+			vehiculo.getTemporalPMP().setFiltroAntipolenKm(vehiculo.getTemporalPMP().getFiltroAntipolenKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setFiltroAntipolenMes(vehiculo.getTemporalPMP().getFiltroAntipolenMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isCorreaDistribucion() == true) {
+			vehiculo.getTemporalPMP().setCorreaDistribucionKm(vehiculo.getTemporalPMP().getCorreaDistribucionKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setCorreaDistribucionMes(vehiculo.getTemporalPMP().getCorreaDistribucionMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isKitDistribucion() == true) {
+			vehiculo.getTemporalPMP().setKitDistribucionKm(vehiculo.getTemporalPMP().getKitDistribucionKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setKitDistribucionMes(vehiculo.getTemporalPMP().getKitDistribucionMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isReglajeProyectores() == true) {
+			vehiculo.getTemporalPMP().setReglajeProyectoresKm(vehiculo.getTemporalPMP().getReglajeProyectoresKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setReglajeProyectoresMes(vehiculo.getTemporalPMP().getReglajeProyectoresMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.ispHLiquidoRefrigeracion() == true) {
+			vehiculo.getTemporalPMP().setpHLiquidoRefrigeracionKm(vehiculo.getTemporalPMP().getpHLiquidoRefrigeracionKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setpHLiquidoRefrigeracionMes(vehiculo.getTemporalPMP().getpHLiquidoRefrigeracionMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isLiquidoRefrigeracion() == true) {
+			vehiculo.getTemporalPMP().setLiquidoRefrigeracionKm(vehiculo.getTemporalPMP().getLiquidoRefrigeracionKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setLiquidoRefrigeracionMes(vehiculo.getTemporalPMP().getLiquidoRefrigeracionMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isCorreaArrastreAccesorios() == true) {
+			vehiculo.getTemporalPMP().setCorreaArrastreAccesoriosKm(vehiculo.getTemporalPMP().getCorreaArrastreAccesoriosKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setCorreaArrastreAccesoriosMes(vehiculo.getTemporalPMP().getCorreaArrastreAccesoriosMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isKitCorreaArrastreAccesorios() == true) {
+			vehiculo.getTemporalPMP().setKitCorreaArrastreAccesoriosKm(vehiculo.getTemporalPMP().getKitCorreaArrastreAccesoriosKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setKitCorreaArrastreAccesoriosMes(vehiculo.getTemporalPMP().getKitCorreaArrastreAccesoriosMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isAnticongelante() == true) {
+			vehiculo.getTemporalPMP().setAnticongelanteKm(vehiculo.getTemporalPMP().getAnticongelanteKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setAnticongelanteMes(vehiculo.getTemporalPMP().getAnticongelanteMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isAceiteTransimision() == true) {
+			vehiculo.getTemporalPMP().setAceiteTransimisionKm(vehiculo.getTemporalPMP().getAceiteTransimisionKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setAceiteTransimisionMes(vehiculo.getTemporalPMP().getAceiteTransimisionMes() + mesesDesdeAltaHastaMantenimiento);
+		}
+		
+		if (mantenimientoRealizado.isBujiasEncendido() == true) {
+			vehiculo.getTemporalPMP().setBujiasEncendidoKm(vehiculo.getTemporalPMP().getBujiasEncendidoKm() + vehiculo.getKilometrosActuales());
+			vehiculo.getTemporalPMP().setBujiasEncendidoMes(vehiculo.getTemporalPMP().getBujiasEncendidoMes() + mesesDesdeAltaHastaMantenimiento);
+		}	
+		
+		
+	}
 
 	
-//	public static void avisoMeses(Vehiculo vehiculo) {
-//				
-//		List<Pieza> piezasPMPpgc1111a = vehiculo.getTemporalPMP().getPiezas();		
-//		
-//		Comparator<Pieza> comparadorMeses = new Comparator<Pieza>() {
-//			@Override
-//			public int compare(Pieza pieza1, Pieza pieza2) {
-//			return Integer.compare(pieza1.getMeses(), pieza2.getMeses());
-//			}		
-//		};
-//		piezasPMPpgc1111a.sort(comparadorMeses);
-//		
-//		List<Pieza> menoresMeses = new ArrayList<Pieza>();
-//		for (Pieza pieza : piezasPMPpgc1111a) {
-//			if (pieza.getMeses() == piezasPMPpgc1111a.get(0).getMeses()) {
-//				menoresMeses.add(pieza);
-//			}
-//		}
-//		
-//		int diferenciaMeses = piezasPMPpgc1111a.get(0).getMeses() - vehiculo.getMesesActuales();
-//		
-//		if (diferenciaMeses > 0) {
-//			System.out.println("Dentro de " + diferenciaMeses + " meses, deben realizarse operaciones de mantenimiento de: ");
-//		} else if (diferenciaMeses < 0){
-//			System.out.println("Hace " + -diferenciaMeses +	" meses, deberían haberse realizado operaciones de mantenimiento de: ");
-//		} else {
-//			System.out.println("Este mes deben realizarse operaciones de mantenimiento de: ");
-//		}
-//		
-//		for (Pieza pieza : menoresMeses) {
-//			System.err.println(pieza.getTipoPieza());
-//		}
-//	}
-
 	
 	public static void avisoKilometros(Vehiculo vehiculo) {
 		
