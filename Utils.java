@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Utils {
 	
-	public static int getMeses(LocalDate localDate, LocalDate localdate2) {
+	public static int calculaMeses(LocalDate localDate, LocalDate localdate2) {
 		return (int) localDate.until(localdate2).toTotalMonths();
 	}
 	
@@ -105,7 +105,7 @@ public class Utils {
 	}
 
 	
-	public static void avisoKilometros(Vehiculo vehiculo) {
+	public static List<AvisoKm> avisoKilometros(Vehiculo vehiculo) {
 		
 		List<Integer> piezasKm = new ArrayList<>();
 		
@@ -131,29 +131,75 @@ public class Utils {
 		int menorKm = piezasKm.get(0);
 
 		int kilometrosRestantes = menorKm - vehiculo.getKilometrosActuales();
-
-		if (kilometrosRestantes >= 0) {
-			System.out.println("Dentro de " + kilometrosRestantes +	" kilómetros, deben realizarse operaciones de mantenimiento de: ");
-		} else {
-			System.out.println("Hace " + -kilometrosRestantes +	" kilómetros, deberían haberse realizado operaciones de mantenimiento de: ");
-		}
 		
-		if (vehiculo.getTemporalPMP().getLiquidoFrenosKm() == menorKm) {System.out.println("LIQUIDO FRENOS");}
-		if (vehiculo.getTemporalPMP().getOperacionesSistematicasKm() == menorKm) {System.out.println("OPERACIONES SISTEMATICAS");}
-		if (vehiculo.getTemporalPMP().getFiltroAireKm() == menorKm) {System.out.println("FILTRO AIRE");}
-		if (vehiculo.getTemporalPMP().getFiltroAireHabitaculoKm() == menorKm) {System.out.println("FILTRO AIRE HABITACULO");}
-		if (vehiculo.getTemporalPMP().getFiltroCombustibleKm() == menorKm) {System.out.println("FILTRO COMBUSTIBLE");}
-		if (vehiculo.getTemporalPMP().getFiltroAntipolenKm() == menorKm) {System.out.println("FILTRO ANTIPOLEN");}
-		if (vehiculo.getTemporalPMP().getCorreaDistribucionKm() == menorKm) {System.out.println("CORREA DISTRIBUCION");}
-		if (vehiculo.getTemporalPMP().getKitDistribucionKm() == menorKm) {System.out.println("KIT DISTRIBUCION");}
-		if (vehiculo.getTemporalPMP().getReglajeProyectoresKm() == menorKm) {System.out.println("REGLAJE PROYECTORES");}
-		if (vehiculo.getTemporalPMP().getpHLiquidoRefrigeracionKm() == menorKm) {System.out.println("PH LIQUIDO REFRIGERACION");}
-		if (vehiculo.getTemporalPMP().getLiquidoRefrigeracionKm() == menorKm) {System.out.println("LIQUIDO REFRIGERACION");}
-		if (vehiculo.getTemporalPMP().getCorreaArrastreAccesoriosKm() == menorKm) {System.out.println("CORREA ARRASTRE ACCESORIOS");}
-		if (vehiculo.getTemporalPMP().getKitCorreaArrastreAccesoriosKm() == menorKm) {System.out.println("KIT CORREA ARRASTRE ACCESORIOS");}
-		if (vehiculo.getTemporalPMP().getAnticongelanteKm() == menorKm) {System.out.println("ANTICONGELANTE");}
-		if (vehiculo.getTemporalPMP().getAceiteTransimisionKm() == menorKm) {System.out.println("ACEITE TRANSMISION");}
-		if (vehiculo.getTemporalPMP().getBujiasEncendidoKm() == menorKm) {System.out.println("BUJIAS ENCENDIDO");}
+		List<AvisoKm> avisosKm = new ArrayList<AvisoKm>();
+		
+		if (vehiculo.getTemporalPMP().getLiquidoFrenosKm() == menorKm) {
+			AvisoKm avisoLiquidoFrenosKm = new AvisoKm("LIQUIDO FRENOS", kilometrosRestantes);
+			avisosKm.add(avisoLiquidoFrenosKm);
+			}
+		if (vehiculo.getTemporalPMP().getOperacionesSistematicasKm() == menorKm) {
+			AvisoKm avisoOperacionesSistematicasKm = new AvisoKm("OPERACIONES SISTEMATICAS", kilometrosRestantes);
+			avisosKm.add(avisoOperacionesSistematicasKm);
+			}
+		if (vehiculo.getTemporalPMP().getFiltroAireKm() == menorKm) {
+			AvisoKm avisoFiltroAireKm = new AvisoKm("FILTRO AIRE", kilometrosRestantes);
+			avisosKm.add(avisoFiltroAireKm);
+			}
+		if (vehiculo.getTemporalPMP().getFiltroAireHabitaculoKm() == menorKm) {
+			AvisoKm avisoFiltroAireHabitaculoKm = new AvisoKm("FILTRO AIRE HABITACULO", kilometrosRestantes);
+			avisosKm.add(avisoFiltroAireHabitaculoKm);
+			}
+		if (vehiculo.getTemporalPMP().getFiltroCombustibleKm() == menorKm) {
+			AvisoKm avisoFiltroCombustibleKm = new AvisoKm("FILTRO COMBUSTIBLE", kilometrosRestantes);
+			avisosKm.add(avisoFiltroCombustibleKm);
+			}
+		if (vehiculo.getTemporalPMP().getFiltroAntipolenKm() == menorKm) {
+			AvisoKm avisoFiltroAntipolenKm = new AvisoKm("FILTRO ANTIPOLEN", kilometrosRestantes);
+			avisosKm.add(avisoFiltroAntipolenKm);
+			}
+		if (vehiculo.getTemporalPMP().getCorreaDistribucionKm() == menorKm) {
+			AvisoKm avisoCorreaDistribucionKm = new AvisoKm("CORREA DISTRIBUCION", kilometrosRestantes);
+			avisosKm.add(avisoCorreaDistribucionKm);
+			}
+		if (vehiculo.getTemporalPMP().getKitDistribucionKm() == menorKm) {
+			AvisoKm avisoKitDistribucionKm = new AvisoKm("KIT DISTRIBUCION", kilometrosRestantes);
+			avisosKm.add(avisoKitDistribucionKm);
+			}
+		if (vehiculo.getTemporalPMP().getReglajeProyectoresKm() == menorKm) {
+			AvisoKm avisoReglajeProyectoresKm = new AvisoKm("REGLAJE PROYECTORES", kilometrosRestantes);
+			avisosKm.add(avisoReglajeProyectoresKm);
+			}
+		if (vehiculo.getTemporalPMP().getpHLiquidoRefrigeracionKm() == menorKm) {
+			AvisoKm avisoPhLiquidoRefrigeracionKm = new AvisoKm("PH LIQUIDO REFRIGERACION", kilometrosRestantes);
+			avisosKm.add(avisoPhLiquidoRefrigeracionKm);
+			}
+		if (vehiculo.getTemporalPMP().getLiquidoRefrigeracionKm() == menorKm) {
+			AvisoKm avisoLiquidoRefrigeracionKm = new AvisoKm("LIQUIDO REFRIGERACION", kilometrosRestantes);
+			avisosKm.add(avisoLiquidoRefrigeracionKm);
+			}
+		if (vehiculo.getTemporalPMP().getCorreaArrastreAccesoriosKm() == menorKm) {
+			AvisoKm avisoCorreaArrastreAccesoriosKm = new AvisoKm("CORREA ARRASTRE ACCESORIOS", kilometrosRestantes);
+			avisosKm.add(avisoCorreaArrastreAccesoriosKm);
+			}
+		if (vehiculo.getTemporalPMP().getKitCorreaArrastreAccesoriosKm() == menorKm) {
+			AvisoKm avisokitCorreaArrastreAccesoriosKm = new AvisoKm("KIT CORREA ARRASTRE ACCESORIOS", kilometrosRestantes);
+			avisosKm.add(avisokitCorreaArrastreAccesoriosKm);
+			}
+		if (vehiculo.getTemporalPMP().getAnticongelanteKm() == menorKm) {
+			AvisoKm avisoAnticongelanteKm = new AvisoKm("ANTICONGELANTE", kilometrosRestantes);
+			avisosKm.add(avisoAnticongelanteKm);
+			}
+		if (vehiculo.getTemporalPMP().getAceiteTransimisionKm() == menorKm) {
+			AvisoKm avisoAceiteTransmisionKm = new AvisoKm("ACEITE TRANSMISION", kilometrosRestantes);
+			avisosKm.add(avisoAceiteTransmisionKm);
+			}
+		if (vehiculo.getTemporalPMP().getBujiasEncendidoKm() == menorKm) {
+			AvisoKm avisoBujiasEncendidoKm = new AvisoKm("BUJIAS ENCENDIDO", kilometrosRestantes);
+			avisosKm.add(avisoBujiasEncendidoKm);
+			}
+		
+		return avisosKm;
 		
 	}
 	

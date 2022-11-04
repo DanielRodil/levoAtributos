@@ -36,6 +36,7 @@ public class PlanPreventivo {
 	private int aceiteTransimisionMes;
 	private int bujiasEncendidoKm;
 	private int bujiasEncendidoMes;
+	
 	public String getCondicionesUso() {
 		return condicionesUso;
 	}

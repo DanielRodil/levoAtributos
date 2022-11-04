@@ -49,18 +49,18 @@ public class App {
 		System.out.println("\nPGC1111A:");
 		System.out.println(pgc1111a.toString());	
 		System.out.println("\nAVISOS PGC1111A:");
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		Utils.avisoMeses(pgc1111a);
 
 		//avisos si entro el 19/07/21 (10 meses despues del alta)
 		pgc1111a.setKilometrosActuales(20000);
-		pgc1111a.setMesesActuales(Utils.getMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
+		pgc1111a.setMesesActuales(Utils.calculaMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
 		System.out.println("---------------------------------------------------------------------------------------");
 		System.out.println("\nPGC1111A (10 meses despues del alta):");
 		System.out.println(pgc1111a.toString());	
 		System.out.println("\nAVISOS PGC1111A (10 meses despues del alta):");
 		Utils.avisoMeses(pgc1111a);
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		
 		//creamos lista de mantenimientos en vehiculo
 		List<MantenimientoRealizado> mantenimientosPGC1111a = new ArrayList<MantenimientoRealizado>();
@@ -80,17 +80,17 @@ public class App {
 		System.out.println(pgc1111a.toString());		
 		System.out.println("\nAVISOS PGC1111A despues de PRIMER MANTENIMIENTO:");
 		Utils.avisoMeses(pgc1111a);
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		
 		//avisos si entro el 19/01/23 (28 meses despues del alta y 4 despues del primer mantenimiento)
 		pgc1111a.setKilometrosActuales(45000);
-		pgc1111a.setMesesActuales(Utils.getMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
+		pgc1111a.setMesesActuales(Utils.calculaMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
 		System.out.println("---------------------------------------------------------------------------------------");
 		System.out.println("\nPGC1111A (28 meses despues del alta):");
 		System.out.println(pgc1111a.toString());	
 		System.out.println("\nAVISOS PGC1111A (28 meses despues del alta):");
 		Utils.avisoMeses(pgc1111a);
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		
 		//se crea el segundo mantenimiento
 		MantenimientoRealizado mantenimiento2pgc1111a = new MantenimientoRealizado();
@@ -106,7 +106,7 @@ public class App {
 		System.out.println(pgc1111a.toString());		
 		System.out.println("\nAVISOS PGC1111A despues de SEGUNDO MANTENIMIENTO:");
 		Utils.avisoMeses(pgc1111a);
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		
 		//se crea el tercer mantenimiento
 		MantenimientoRealizado mantenimiento3pgc1111a = new MantenimientoRealizado();
@@ -122,17 +122,17 @@ public class App {
 		System.out.println(pgc1111a.toString());		
 		System.out.println("\nAVISOS PGC1111A despues de TERCER MANTENIMIENTO:");
 		Utils.avisoMeses(pgc1111a);
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		
 		//avisos si entro el 19/11/24 (50 meses despues del alta y 14 despues del tercer mantenimiento)
 		pgc1111a.setKilometrosActuales(120000);
-		pgc1111a.setMesesActuales(Utils.getMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
+		pgc1111a.setMesesActuales(Utils.calculaMeses(pgc1111a.getFechaAlta(), fechaAccesoApp));
 		System.out.println("---------------------------------------------------------------------------------------");
 		System.out.println("\nPGC1111A (50 meses despues del alta):");
 		System.out.println(pgc1111a.toString());	
 		System.out.println("\nAVISOS PGC1111A (50 meses despues del alta):");
 		Utils.avisoMeses(pgc1111a);
-		Utils.avisoKilometros(pgc1111a);
+		Utils.avisoKilometros(pgc1111a).forEach(System.out::print);
 		
 	}
 
